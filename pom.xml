@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
     <groupId>coveo</groupId>
     <artifactId>backend-coding-challenge</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -22,6 +21,7 @@
         <module>suggestions.search.api</module>
         <module>suggestions.search.h2</module>
         <module>suggestions.app</module>
+        <module>suggestions.app.itest</module>
     </modules>
 
 </project>

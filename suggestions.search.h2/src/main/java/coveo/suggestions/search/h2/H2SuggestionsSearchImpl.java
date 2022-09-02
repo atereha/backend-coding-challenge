@@ -27,7 +27,7 @@ public class H2SuggestionsSearchImpl implements SuggestionsSearchApi {
                 Suggestion suggestion = new Suggestion();
                 suggestion.setGeonameid(rs.getInt("geonameid"));
                 suggestion.setName(rs.getString("name"));
-                suggestion.setLatitude(rs.getDouble("longitude"));
+                suggestion.setLatitude(rs.getDouble("latitude"));
                 suggestion.setLongitude(rs.getDouble("longitude"));
                 return suggestion;
             }

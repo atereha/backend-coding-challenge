@@ -42,12 +42,12 @@ public class SuggestionsControllerTest {
     public void setUp() {
         List<SuggestionsItemDto> suggestionsItemDtos = new ArrayList<>() {
             {
-                add(new SuggestionsItemDto("London, ON, Canada", "42.98339", "-81.23304", 0.9));
+                add(new SuggestionsItemDto("Londontowne, MD, USA", "38.93345", "-76.54941", 0.3));
                 add(new SuggestionsItemDto("London, OH, USA", "39.88645", "-83.44825", 0.5));
                 add(new SuggestionsItemDto("London, KY, USA", "37.12898", "-84.08326", 0.5));
-                add(new SuggestionsItemDto("Londontowne, MD, USA", "38.93345", "-76.54941", 0.3));
-            }
+                add(new SuggestionsItemDto("London, ON, Canada", "42.98339", "-81.23304", 0.9));
 
+            }
         };
         Mockito.when(suggestionsSearchApi.search("Londo"))
                 .thenReturn(suggestionsItemDtos.stream().map(dto -> toSuggestions(dto)).collect(Collectors.toList()));
@@ -139,23 +139,22 @@ public class SuggestionsControllerTest {
     }
 
     @Test
-    public void testNoMatchGetSuggestionsWithCoords() throws Exception {
-        mvc.perform(get("/suggestions")
-                        .queryParam("q", "SomeRandomCityInTheMiddleOfNowhere")
-                        .queryParam("latitude", "43.70011")
-                        .queryParam("longitude", "-79.4163")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$['suggestions']", hasSize(0)));
-    }
-
-    @Test
     public void testNoMatchGetSuggestionsWithoutCoords() throws Exception {
         mvc.perform(get("/suggestions")
                         .queryParam("q", "SomeRandomCityInTheMiddleOfNowhere")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$['suggestions']", hasSize(0)));
+    }
+
+    @Test
+    public void testBsdRequestGetToShortQuery() throws Exception {
+        mvc.perform(get("/suggestions")
+                        .queryParam("q", "lo")
+                        .queryParam("latitude", "43.70011")
+                        .queryParam("longitude", "-79.4163")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
     }
 
     @Test
