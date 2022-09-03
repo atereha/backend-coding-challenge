@@ -17,7 +17,7 @@ public class SuggestionsAppConfiguration {
 
     @Bean
     GeoCoordinateValidator geoCoordinateValidator() {
-        return new GeoCoordinateValidator();
+        return new DummyGeoCoordinateValidator();
     }
 
     @Bean

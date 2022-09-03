@@ -18,7 +18,7 @@ public class DummyDummyNameAndCoordinateBasedSuggestionScoreCalculator extends D
         return adjustScore(baseScore, suggestion);
     }
 
-    public double adjustScore(double baseScore, Suggestion suggestion) {
+    protected double adjustScore(double baseScore, Suggestion suggestion) {
         //TODO change to real
         return baseScore / 2;
     }
