@@ -31,7 +31,7 @@ public class SuggestionsAppConfiguration {
 
             @Override
             public SuggestionScoreCalculator create(String query, double latitude, double longitude) {
-                return new DummyDummyNameAndCoordinateBasedSuggestionScoreCalculator(query, latitude, longitude);
+                return new DummyNameAndCoordinateBasedSuggestionScoreCalculator(query, latitude, longitude);
             }
         };
     }

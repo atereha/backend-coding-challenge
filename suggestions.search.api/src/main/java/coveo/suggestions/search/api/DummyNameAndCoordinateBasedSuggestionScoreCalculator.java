@@ -1,12 +1,12 @@
 package coveo.suggestions.search.api;
 
-public class DummyDummyNameAndCoordinateBasedSuggestionScoreCalculator extends DummyNameBasedSuggestionScoreCalculator {
+public class DummyNameAndCoordinateBasedSuggestionScoreCalculator extends DummyNameBasedSuggestionScoreCalculator {
 
     private double latitude;
 
     private double longitude;
 
-    public DummyDummyNameAndCoordinateBasedSuggestionScoreCalculator(String query, double latitude, double longitude) {
+    public DummyNameAndCoordinateBasedSuggestionScoreCalculator(String query, double latitude, double longitude) {
         super(query);
         this.latitude = latitude;
         this.longitude = longitude;
